@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const testimonialsData = [
         {
-            text: "“Aduh Gantengnyaa”",
-            name: "Azril",
+            text: "“Amazing”",
+            name: "Agus Buntung",
             rating: 4,
         },
         {
