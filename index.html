@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HICARE</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="css/owl.carousel.min.css" rel="stylesheet">
+
+    <link href="css/owl.theme.default.min.css" rel="stylesheet">
+
+    <link href="css/hicare-medic-care.css" rel="stylesheet">
+    <link href="css/auth.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
+    <link href="css/livechat.css" rel="stylesheet">
+</head>
+
+<body id="top">
+
+    <main>
+
+        <nav class="navbar navbar-expand-lg bg-light fixed-top shadow-lg">
+            <div class="container">
+                <a class="navbar-brand mx-auto d-lg-none" href="index.html">
+                    HICARE
+                    <strong class="d-block">Health Specialist</strong>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#hero">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#timeline">Timeline</a>
+                        </li>
+
+                        <a class="navbar-brand d-none d-lg-block" href="index.html">
+                            HICARE
+                            <strong class="d-block">Health Specialist</strong>
+                        </a>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#reviews">Testimonials</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#booking">Booking</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                        <li class="nav-item" id="signup-nav">
+                            <a class="nav-link" href="signup.html">SignUp</a>
+                        </li>
+
+                        <li class="nav-item" id="search-bar-nav">
+                            <input type="text" id="search-input" class="form-control" placeholder="Search..." />
+                        </li>
+                        <li class="nav-item" id="profile-nav" style="display: none;">
+                            <a href="#" id="dropdown-toggle">Profile</a>
+                            <ul id="dropdown-menu" style="display: none;">
+                                <li><a href="#" id="user-profile-name">View Profile</a></li>
+                                <li><a href="#" id="logout-btn">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <a href="#" id="livechat-button" class="livechat-button" title="Livechat" onclick="toggleChatWindow()">
+                <img src="https://static.thenounproject.com/png/214075-200.png" alt="Live Chat" class="livechat-icon">
+                <!-- Gambar Icon Chat -->
+            </a>
+
+            <!-- Live Chat Window -->
+            <div id="chat-window" class="chat-window">
+                <div class="chat-header">
+                    <span>Live Chat</span>
+                    <button id="close-chat" onclick="toggleChatWindow()">X</button>
+                </div>
+                <div id="chat-messages" class="chat-messages">
+                    <div class="chat-message bot">Hello!, Im Ria How can I assist you today?</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder=" " onkeyup="handleInput(event)">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-12">
+                        <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="images/slider/portrait-successful-mid-adult-doctor-with-crossed-arms.jpg"
+                                        class="img-fluid" alt="">
+                                </div>
+
+                                <div class="carousel-item">
+                                    <img src="images/slider/young-asian-female-dentist-white-coat-posing-clinic-equipment.jpg"
+                                        class="img-fluid" alt="">
+                                </div>
+
+                                <div class="carousel-item">
+                                    <img src="images/slider/doctor-s-hand-holding-stethoscope-closeup.jpg"
+                                        class="img-fluid" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heroText d-flex flex-column justify-content-center">
+
+                            <h1 class="mt-auto mb-2">
+                                Better
+                                <div class="animated-info">
+                                    <span class="animated-item">health</span>
+                                    <span class="animated-item">days</span>
+                                    <span class="animated-item">lives</span>
+                                </div>
+                            </h1>
+
+                            <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. A eveniet culpa
+                                ratione harum optio obcaecati, recusandae doloremque unde et perspiciatis ipsa. Deserunt
+                                temporibus nemo labore culpa perferendis aperiam incidunt rem.</p>
+
+                            <div class="heroLinks d-flex flex-wrap align-items-center">
+                                <a class="custom-link me-4" href="#about" data-hover="Learn More">Learn More</a>
+
+                                <p class="contact-phone mb-0"><i class="bi-phone"></i> 010-020-0340</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" id="about">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <h2 class="mb-lg-3 mb-3">Meet Dr. Carson</h2>
+
+                        <p>Protect yourself and others by wearing masks and washing hands frequently. Outdoor is safer
+                            than indoor for gatherings or holding events. People who get sick with Coronavirus disease
+                            (COVID-19) will experience mild to moderate symptoms and recover without special treatments.
+                        </p>
+
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium veniam voluptatum,
+                            laborum magni quis modi quibusdam autem placeat maxime quam soluta cupiditate? Neque ea
+                            aliquid iure sit expedita quod ex.</p>
+                    </div>
+
+                    <div class="col-lg-4 col-md-5 col-12 mx-auto">
+                        <div
+                            class="featured-circle bg-white shadow-lg d-flex justify-content-center align-items-center">
+                            <p class="featured-text"><span class="featured-number">12</span> Years<br> of Experiences
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-6 ps-0">
+                        <img src="images/gallery/medium-shot-man-getting-vaccine.jpg" class="img-fluid galleryImage"
+                            alt="get a vaccine" title="get a vaccine for yourself">
+                    </div>
+
+                    <div class="col-lg-6 col-6 pe-0">
+                        <img src="images/gallery/female-doctor-with-presenting-hand-gesture.jpg"
+                            class="img-fluid galleryImage" alt="wear a mask" title="wear a mask to protect yourself">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding pb-0" id="timeline">
+            <div class="container">
+                <div class="row">
+
+                    <h2 class="text-center mb-lg-5 mb-4">Our Timeline</h2>
+
+                    <div class="timeline">
+                        <div
+                            class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                            <div
+                                class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                <h3 class=" text-light">Get the vaccine</h3>
+
+                                <p>Donec facilisis urna dui, a dignissim mauris pretium a. Quisque quis libero
+                                    fermentum, tempus felis eu, consequat nibh.</p>
+                            </div>
+
+                            <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                <i class="bi-patch-check-fill timeline-icon"></i>
+                            </div>
+
+                            <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                <time>2021-07-31 Saturday</time>
+                            </div>
+                        </div>
+
+                        <div
+                            class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                            <div
+                                class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                <h3 class=" text-light">Consulting your health</h3>
+
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum veniam est facilis
+                                    labore architecto! Mollitia ullam, rem ad eos alias optio. Aliquid tenetur, maxime
+                                    vero obcaecati molestiae assumenda quod ex!</p>
+                            </div>
+
+                            <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                <i class="bi-book timeline-icon"></i>
+                            </div>
+
+                            <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                <time>2021-07-15 Thursday</time>
+                            </div>
+                        </div>
+
+                        <div
+                            class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                            <div
+                                class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                <h3 class=" text-light">Certified Nurses</h3>
+
+                                <p>Phasellus eleifend, urna interdum congue viverra, arcu neque ultrices ligula, id
+                                    pulvinar nisi nibh et lacus. Vivamus gravida, ipsum non euismod tincidunt, sapien
+                                    elit fermentum mi, quis iaculis enim ligula at arcu.</p>
+                            </div>
+
+                            <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                <i class="bi-file-medical timeline-icon"></i>
+                            </div>
+
+                            <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                <time>2021-06-28 Monday</time>
+                            </div>
+                        </div>
+
+                        <div
+                            class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes my-lg-5 my-4">
+                            <div
+                                class="col-9 col-md-5 ms-md-4 ms-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                <h3 class=" text-light">Covid-19 Hospitals</h3>
+
+                                <p class="mb-0 pb-0">Fusce vestibulum euismod nulla sed ultrices. Praesent rutrum nulla
+                                    vel sapien euismod, quis tempus dui placerat.</p>
+
+                                <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas
+                                    faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla</p>
+                            </div>
+
+                            <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                <i class="bi-globe timeline-icon"></i>
+                            </div>
+
+                            <div class="col-9 col-md-5 pe-md-3 pe-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                <time>2021-05-30 Sunday</time>
+                            </div>
+                        </div>
+
+                        <div
+                            class="row g-0 justify-content-end justify-content-md-around align-items-start timeline-nodes">
+                            <div
+                                class="col-9 col-md-5 me-md-4 me-lg-0 order-3 order-md-1 timeline-content bg-white shadow-lg">
+                                <h3 class=" text-light">Freelance Nursing</h3>
+
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt at vitae vero?
+                                    Optio vero fugit, inventore, eum dicta atque ab, cum a explicabo facilis nemo
+                                    deserunt impedit quidem exercitationem provident.</p>
+                            </div>
+
+                            <div class="col-3 col-sm-1 order-2 timeline-icons text-md-center">
+                                <i class="bi-person timeline-icon"></i>
+                            </div>
+
+                            <div class="col-9 col-md-5 ps-md-3 ps-lg-0 order-1 order-md-3 py-4 timeline-date">
+                                <time>2021-05-18 Tuesday</time>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="section-padding pb-0" id="reviews">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="text-center mb-lg-5 mb-4">Our Patients</h2>
+
+                        <div class="owl-carousel reviews-carousel">
+                            <!-- Testimonial entries will go here -->
+                        </div>
+
+                        <!-- Formulir Testimonial -->
+                        <div class="mt-5">
+                            <h3>Submit Your Testimonial</h3>
+                            <form id="testimonial-form">
+                                <div class="mb-3">
+                                    <label for="names" class="form-label">Your Name</label>
+                                    <input type="text" id="names" class="form-control" placeholder="Enter your name"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="messages" class="form-label">Your Message</label>
+                                    <textarea id="messages" class="form-control" rows="3"
+                                        placeholder="Enter your testimonial" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rating" class="form-label">Rating</label>
+                                    <input type="number" id="rating" class="form-control" min="1" max="5"
+                                        placeholder="Rating (1 to 5)" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit Testimonial</button>
+                            </form>
+                        </div>
+
+                        <!-- Pagination Controls -->
+                        <div class="mt-4 d-flex justify-content-between">
+                            <button id="prev-btn" class="btn btn-secondary"
+                                style="padding: 5px 8px; 
+                    border: white;
+                    font-size: 18px; border-radius: 50%; background-color: white; box-shadow: 0 0 10px 0 rgb(255, 255, 255);">
+                                <i class="fas fa-chevron-left" style="color: #6c757d;"></i>
+                                <!-- Previous Icon with Gray color -->
+                            </button>
+                            <button id="next-btn" class="btn btn-secondary"
+                                style="padding: 5px 8px; font-size: 18px; 
+                    border: white; border-radius: 100%; background-color: white; box-shadow: 0 0 10px 0 rgb(255, 255, 255);">
+                                <i class="fas fa-chevron-right" style="color: #6c757d;"></i>
+                                <!-- Next Icon with Gray color -->
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section-padding" id="booking">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 col-12 mx-auto">
+                        <div class="booking-form">
+
+                            <h2 class="text-center mb-lg-3 mb-2">Book an appointment</h2>
+
+                            <form role="form" action="#booking" method="post">
+                                <div class="row">
+                                    <div class="col-lg-6 col-12">
+                                        <input type="text" name="name" id="name" class="form-control"
+                                            placeholder="Full name" required>
+                                    </div>
+
+                                    <div class="col-lg-6 col-12">
+                                        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*"
+                                            class="form-control" placeholder="Email address" required>
+                                    </div>
+
+                                    <div class="col-lg-6 col-12">
+                                        <input type="telephone" name="phone" id="phone"
+                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control"
+                                            placeholder="Phone: 123-456-7890">
+                                    </div>
+
+                                    <div class="col-lg-6 col-12">
+                                        <input type="date" name="date" id="date" value="" class="form-control">
+
+                                    </div>
+
+                                    <div class="col-12">
+                                        <textarea class="form-control" rows="5" id="message" name="message"
+                                            placeholder="Additional Message"></textarea>
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-4 col-6 mx-auto">
+                                        <button type="submit" class="form-control" id="submit-button">Book Now</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer section-padding" id="contact">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-5 me-auto col-12">
+                    <h5 class="mb-lg-4 mb-3">Opening Hours</h5>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex">
+                            Sunday : Closed
+                        </li>
+
+                        <li class="list-group-item d-flex">
+                            Monday, Tuesday - Firday
+                            <span>8:00 AM - 3:30 PM</span>
+                        </li>
+
+                        <li class="list-group-item d-flex">
+                            Saturday
+                            <span>10:30 AM - 5:30 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6 col-12 my-4 my-lg-0">
+                    <h5 class="mb-lg-4 mb-3">Our Clinic</h5>
+
+                    <p><a href="mailto:hello@company.co">hello@company.co</a>
+                    <p>
+
+                    <p>123 Digital Art Street, San Diego, CA 92123</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-12 ms-auto">
+                    <h5 class="mb-lg-4 mb-3">Socials</h5>
+
+                    <ul class="social-icon">
+                        <li><a href="#" class="social-icon-link bi-facebook"></a></li>
+
+                        <li><a href="#" class="social-icon-link bi-twitter"></a></li>
+
+                        <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                        <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-12 ms-auto mt-4 mt-lg-0">
+                    <p class="copyright-text">Copyright © HICARE 2021 </p>
+                </div>
+
+            </div>
+            </section>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/scrollspy.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/testimonial.js"></script>
+    <script src="js/livechat.js"></script>
+
+</body>
+
+</html>
