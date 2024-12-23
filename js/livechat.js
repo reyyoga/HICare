@@ -1,177 +1,140 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const testimonialsData = [
-      {
-          text: "“Aduh Gantengnyaa”",
-          name: "Azril",
-          rating: 4,
-      },
-      {
-          text: "“Amazing experience!”",
-          name: "John",
-          rating: 5,
-      },
-      {
-          text: "“Very helpful and caring staff.”",
-          name: "Sarah",
-          rating: 4,
-      },
-      {
-          text: "“Great service, will come back.”",
-          name: "Mike",
-          rating: 3,
-      },
-      {
-          text: "“Top-notch health care.”",
-          name: "Elena",
-          rating: 5,
-      },
-      {
-          text: "“The best doctor I’ve ever had.”",
-          name: "Daniel",
-          rating: 5,
-      },
-      {
-          text: "“Professional and friendly staff.”",
-          name: "Liam",
-          rating: 4,
-      },
+// Function to open/close the live chat window
+function toggleChatWindow() {
+  const chatWindow = document.getElementById('chat-window');
+  const livechatButton = document.getElementById('livechat-button');
+  
+  if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+    chatWindow.style.display = 'flex';
+    livechatButton.style.display = 'none'; // Hide the Livechat button when chat is open
+  } else {
+    chatWindow.style.display = 'none';
+    livechatButton.style.display = 'block'; // Show the Livechat button when chat is closed
+  }
+}
+
+// Function to handle user input
+function handleInput(event) {
+  const inputField = document.getElementById('user-input');
+  const message = inputField.value.trim();
+
+  // If the user presses enter, send the message
+  if (event.key === 'Enter' && message) {
+    sendMessage();
+  }
+}
+
+// Function to send a user message
+function sendMessage() {
+  const inputField = document.getElementById('user-input');
+  const message = inputField.value.trim();
+
+  if (!message) return;
+
+  // Display the user message
+  const chatMessages = document.getElementById('chat-messages');
+  const userMessage = document.createElement('div');
+  userMessage.classList.add('chat-message', 'user');
+  userMessage.textContent = message;
+  chatMessages.appendChild(userMessage);
+
+  // List of medical responses with options
+  const botResponses = [
+    {
+      text: "Do you need medical assistance? I can provide basic information.",
+      options: [
+        "About disease symptoms",
+        "How to care for yourself at home",
+        "The importance of regular check-ups"
+      ]
+    },
+    {
+      text: "I'm here to help. What can I assist you with?",
+      options: [
+        "Heart disease",
+        "Diabetes",
+        "Mental health"
+      ]
+    },
+    {
+      text: "Hi, how can I assist your health today?",
+      options: [
+        "Respiratory infections",
+        "Autoimmune diseases",
+        "Healthy lifestyle"
+      ]
+    }
   ];
 
-  const carousel = document.querySelector('.reviews-carousel');
-  const testimonialForm = document.getElementById('testimonial-form');
-  const prevButton = document.getElementById('prev-btn');
-  const nextButton = document.getElementById('next-btn');
-  const itemsPerPage = 3; // Jumlah testimonial per halaman
-  let currentPage = 1;
-
-  // Fungsi untuk membuat elemen testimonial dengan bintang rating
-  const createTestimonialItem = (testimonial) => {
-      const figure = document.createElement('figure');
-      figure.classList.add('reviews-thumb', 'd-flex', 'flex-wrap', 'align-items-center', 'rounded');
-
-      const stars = document.createElement('div');
-      stars.classList.add('reviews-stars');
-      stars.innerHTML = getStars(testimonial.rating);
-
-      const textElement = document.createElement('p');
-      textElement.classList.add('reviews-text', 'w-100');
-      textElement.textContent = testimonial.text;
-
-      const imgElement = document.createElement('img');
-      imgElement.classList.add('img-fluid', 'reviews-image');
-      imgElement.setAttribute('src', 'images/reviews/beautiful-woman-face-portrait-brown-background.jpeg');
-      imgElement.setAttribute('alt', '');
-
-      const figcaption = document.createElement('figcaption');
-      figcaption.classList.add('ms-4');
-      figcaption.innerHTML = `<strong>${testimonial.name}</strong><span class="text-muted">Patient</span>`;
-
-      figure.appendChild(stars);
-      figure.appendChild(textElement);
-      figure.appendChild(imgElement);
-      figure.appendChild(figcaption);
-
-      return figure;
-  };
-
-  // Fungsi untuk membuat bintang berdasarkan rating
-  const getStars = (rating) => {
-      let stars = '';
-      for (let i = 0; i < 5; i++) {
-          if (i < rating) {
-              stars += '<i class="bi-star-fill"></i>';
-          } else {
-              stars += '<i class="bi-star"></i>';
-          }
-      }
-      return stars;
-  };
-
-  // Fungsi untuk memuat testimonial ke dalam carousel
-  const loadTestimonials = (page) => {
-      carousel.innerHTML = '';  // Menghapus semua testimonial sebelumnya
-
-      const startIndex = (page - 1) * itemsPerPage;
-      const endIndex = Math.min(startIndex + itemsPerPage, testimonialsData.length);
-      const currentTestimonials = testimonialsData.slice(startIndex, endIndex);
-
-      currentTestimonials.forEach((testimonial) => {
-          const testimonialItem = createTestimonialItem(testimonial);
-          carousel.appendChild(testimonialItem);
-      });
-
-      // Mengaktifkan atau menonaktifkan tombol navigasi
-      prevButton.disabled = page === 1;
-      nextButton.disabled = page * itemsPerPage >= testimonialsData.length;
-  };
-
-  // Memuat testimonial pertama kali
-  loadTestimonials(currentPage);
-
-  // Event listener untuk tombol Next
-  nextButton.addEventListener('click', () => {
-      if (currentPage * itemsPerPage < testimonialsData.length) {
-          currentPage++;
-          loadTestimonials(currentPage);
-      }
-  });
-
-  // Event listener untuk tombol Previous
-  prevButton.addEventListener('click', () => {
-      if (currentPage > 1) {
-          currentPage--;
-          loadTestimonials(currentPage);
-      }
-  });
-
-  // Event listener untuk form testimonial
-  testimonialForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('names').value.trim();
-      const message = document.getElementById('messages').value.trim();
-      const rating = document.getElementById('rating').value;
-
-      if (!name || !message || !rating) {
-          showToast('All fields are required!', 'danger');
-          return;
-      }
-
-      const newTestimonial = {
-          text: `"${message}"`,
-          name: name,
-          rating: parseInt(rating),
-      };
-
-      testimonialsData.push(newTestimonial);
-      loadTestimonials(currentPage); // Refresh testimonial yang ditampilkan
-      testimonialForm.reset();
-      showToast('Thank you for your testimonial!', 'success');
-  });
-
-  // Fungsi untuk menampilkan toast notification
-  function showToast(message, type) {
-      const toast = document.createElement('div');
-      toast.classList.add('toast');
-      toast.textContent = message;
-
-      if (type === 'success') {
-          toast.style.backgroundColor = '#28a745';
-      } else if (type === 'danger') {
-          toast.style.backgroundColor = '#dc3545';
-      }
-
-      document.body.appendChild(toast);
-
-      setTimeout(() => {
-          toast.style.opacity = 1;
-      }, 100);
-
-      setTimeout(() => {
-          toast.style.opacity = 0;
-          setTimeout(() => {
-              toast.remove();
-          }, 500);
-      }, 3000);
+  // Function to pick a random bot response
+  function getRandomBotResponse() {
+    const randomIndex = Math.floor(Math.random() * botResponses.length);
+    return botResponses[randomIndex];
   }
-});
+
+  // Send bot's automatic response with options
+  setTimeout(() => {
+    const response = getRandomBotResponse();
+    
+    // Display the bot's message
+    const botMessage = document.createElement('div');
+    botMessage.classList.add('chat-message', 'bot');
+    botMessage.textContent = response.text; // Display the main message
+    chatMessages.appendChild(botMessage);
+
+    // Display options for the user to choose from
+    const optionsContainer = document.createElement('div');
+    response.options.forEach(option => {
+      const optionButton = document.createElement('button');
+      optionButton.classList.add('chat-option');
+      optionButton.textContent = option;
+      optionButton.onclick = () => handleOptionClick(option);
+      optionsContainer.appendChild(optionButton);
+    });
+    chatMessages.appendChild(optionsContainer);
+
+    // Scroll down after the new message
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 1000);
+
+  // Clear the input field after sending the message
+  inputField.value = '';
+  inputField.focus();
+
+  // Scroll down after the new message
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Function to handle option click
+function handleOptionClick(option) {
+  const chatMessages = document.getElementById('chat-messages');
+
+  // Display the user's selected option
+  const userMessage = document.createElement('div');
+  userMessage.classList.add('chat-message', 'user');
+  userMessage.textContent = option;
+  chatMessages.appendChild(userMessage);
+
+  // List of medical responses based on options
+  const medicalResponses = {
+    "About disease symptoms": "Symptoms of diseases can vary greatly depending on the type. Are there any specific symptoms you'd like to know about?",
+    "How to care for yourself at home": "Some tips for self-care at home include getting enough rest, drinking plenty of fluids, and maintaining a healthy diet.",
+    "The importance of regular check-ups": "Regular check-ups can help detect diseases early and prevent more serious health problems.",
+    "Heart disease": "Heart disease is one of the leading causes of death worldwide. Maintaining a healthy diet and regular exercise can reduce the risk.",
+    "Diabetes": "Diabetes is a metabolic disorder that affects blood sugar levels. Proper care is essential in managing this condition.",
+    "Mental health": "Mental health is just as important as physical health. Consulting a professional can help you maintain mental well-being.",
+    "Respiratory infections": "Respiratory infections are often caused by viruses or bacteria. Symptoms can include cough, shortness of breath, and fever.",
+    "Autoimmune diseases": "Autoimmune diseases occur when the immune system attacks the body. Proper management is crucial.",
+    "Healthy lifestyle": "A healthy lifestyle includes a good diet, regular physical activity, and adequate sleep. All of these help maintain both physical and mental health."
+  };
+
+  // Send the bot's response based on the selected option
+  setTimeout(() => {
+    const botMessage = document.createElement('div');
+    botMessage.classList.add('chat-message', 'bot');
+    botMessage.textContent = medicalResponses[option] || "Sorry, I can't provide more information on this.";
+    chatMessages.appendChild(botMessage);
+
+    // Scroll down after the new message
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 1000);
+}
